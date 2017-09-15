@@ -1,0 +1,9 @@
+c:\users\user\documents\visual studio 2017\Projects\models_01\models_01\bin\Debug\models_01.exe.config
+c:\users\user\documents\visual studio 2017\Projects\models_01\models_01\bin\Debug\models_01.exe
+c:\users\user\documents\visual studio 2017\Projects\models_01\models_01\bin\Debug\models_01.pdb
+c:\users\user\documents\visual studio 2017\Projects\models_01\models_01\obj\Debug\models_01.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2017\Projects\models_01\models_01\obj\Debug\models_01.MainForm.resources
+c:\users\user\documents\visual studio 2017\Projects\models_01\models_01\obj\Debug\models_01.Properties.Resources.resources
+c:\users\user\documents\visual studio 2017\Projects\models_01\models_01\obj\Debug\models_01.csproj.GenerateResource.Cache
+c:\users\user\documents\visual studio 2017\Projects\models_01\models_01\obj\Debug\models_01.exe
+c:\users\user\documents\visual studio 2017\Projects\models_01\models_01\obj\Debug\models_01.pdb
