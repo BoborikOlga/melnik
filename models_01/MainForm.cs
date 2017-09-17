@@ -33,25 +33,78 @@ namespace models_01
             var dispersion = GetDispersion(generatedNumbers, expectancy);
             var medium = GetMedium(generatedNumbers, expectancy);
             var indirectSignsRation = CheckByIndirectSigns(generatedNumbers);
+            var period = GetPeriod(generatedNumbers);
+            var aperiodicLength = GetAperiodicLength(generatedNumbers, period);
 
+
+            PeriodTextBox.Text = period.ToString();
+            AperiodicTextBox.Text = aperiodicLength.ToString();
+            DTextBox.Text = dispersion.ToString();
+            DTextBox.Text = dispersion.ToString();
+            DTextBox.Text = dispersion.ToString();
             DTextBox.Text = dispersion.ToString();
             ExpectancyTextBox.Text = expectancy.ToString();
             MediumTextBox.Text = medium.ToString();
             RatioTextBox.Text = Math.Round(indirectSignsRation, 3).ToString();
         }
 
+        private int GetAperiodicLength(List<double> generatedNumbers, int period)
+        {
+            var index = generatedNumbers.Count;
+            for (int i = 0; i + period < generatedNumbers.Count && generatedNumbers.Count == index; i++)
+            {
+                if (generatedNumbers[i] == generatedNumbers[i + period])
+                {
+                    index = i;
+                }
+            }
+
+            return index + period;
+        }
+
+        private int GetPeriod(List<double> generatedNumbers)
+        {
+            var last = generatedNumbers.Last();
+            var firstEqualIndex = generatedNumbers.Count;
+            for (int i = generatedNumbers.Count - 2; i >= 0 && firstEqualIndex == generatedNumbers.Count; i--)
+            {
+                if (generatedNumbers[i] == last)
+                {
+                    firstEqualIndex = i;
+                }
+            }
+            if (firstEqualIndex == generatedNumbers.Count)
+            {
+                return generatedNumbers.Count;
+            }
+            var secondEqualIndex = firstEqualIndex;
+            for (int i = firstEqualIndex - 1; i >= 0 && secondEqualIndex == firstEqualIndex; i--)
+            {
+                if (generatedNumbers[i] == last)
+                {
+                    secondEqualIndex = i;
+                }
+            }
+            if (secondEqualIndex == firstEqualIndex)
+            {
+                return secondEqualIndex;
+            }
+
+            return firstEqualIndex - secondEqualIndex;
+        }
+
         private double CheckByIndirectSigns(List<double> generatedNumbers)
         {
             var couples = 0;
-            for (int i = 1; i < generatedNumbers.Count; i++)
+            for (int i = 0; i + 2 <= generatedNumbers.Count; i += 2)
             {
-                if (generatedNumbers[i - 1] + generatedNumbers[i] < 1)
+                if (generatedNumbers[i] + generatedNumbers[i + 1] < 1)
                 {
                     couples++;
                 }
             }
 
-            return couples / (double) generatedNumbers.Count;
+            return 2 * couples / (double) generatedNumbers.Count;
         }
 
         private double GetExpectancy(IReadOnlyCollection<double> generatedNumbers)

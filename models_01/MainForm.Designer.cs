@@ -49,6 +49,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.RatioTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.PeriodTextBox = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.AperiodicTextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Graph)).BeginInit();
             this.SuspendLayout();
             // 
@@ -207,11 +211,47 @@
             this.label8.TabIndex = 17;
             this.label8.Text = "2K/N:";
             // 
+            // PeriodTextBox
+            // 
+            this.PeriodTextBox.Location = new System.Drawing.Point(802, 93);
+            this.PeriodTextBox.Name = "PeriodTextBox";
+            this.PeriodTextBox.Size = new System.Drawing.Size(100, 22);
+            this.PeriodTextBox.TabIndex = 20;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(799, 73);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 17);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Period:";
+            // 
+            // AperiodicTextBox
+            // 
+            this.AperiodicTextBox.Location = new System.Drawing.Point(918, 93);
+            this.AperiodicTextBox.Name = "AperiodicTextBox";
+            this.AperiodicTextBox.Size = new System.Drawing.Size(100, 22);
+            this.AperiodicTextBox.TabIndex = 22;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(915, 73);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(71, 17);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Aperiodic:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1303, 532);
+            this.Controls.Add(this.AperiodicTextBox);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.PeriodTextBox);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.RatioTextBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.MediumTextBox);
@@ -258,6 +298,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox RatioTextBox;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox PeriodTextBox;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox AperiodicTextBox;
+        private System.Windows.Forms.Label label10;
     }
 }
 
