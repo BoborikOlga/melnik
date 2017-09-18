@@ -46,9 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GeneratorParams.cs" />
-    <Compile Include="interfaces\IGeneratorParams.cs" />
-    <Compile Include="interfaces\ITester.cs" />
+    <Compile Include="Models\GeneratorParams.cs" />
+    <Compile Include="Interfaces\IGeneratorParams.cs" />
+    <Compile Include="Interfaces\ITester.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,9 +57,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RandomGenerator.cs" />
-    <Compile Include="Tester.cs" />
-    <Compile Include="Validator.cs" />
+    <Compile Include="Utils\RandomGenerator.cs" />
+    <Compile Include="Utils\Tester.cs" />
+    <Compile Include="Utils\Validator.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
