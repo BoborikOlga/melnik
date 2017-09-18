@@ -1,4 +1,4 @@
-﻿namespace models_01
+﻿namespace models_01.Interfaces
 {
     public interface IGeneratorParams
     {

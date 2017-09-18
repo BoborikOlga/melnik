@@ -1,7 +1,7 @@
-﻿using System.CodeDom.Compiler;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using models_01.Interfaces;
 
-namespace models_01
+namespace models_01.Utils
 {
     public class RandomGenerator
     {
@@ -18,6 +18,7 @@ namespace models_01
         {
             set => _generatorParams = value;
         }
+
 
         public List<double> GenerateNumbers()
         {

@@ -1,4 +1,6 @@
-﻿namespace models_01
+﻿using models_01.Interfaces;
+
+namespace models_01.Models
 {
     public class GeneratorParams : IGeneratorParams
     {

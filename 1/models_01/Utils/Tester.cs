@@ -1,10 +1,9 @@
-﻿using System;
+﻿using models_01.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace models_01
+namespace models_01.Utils
 {
     public class Tester : ITester
     {

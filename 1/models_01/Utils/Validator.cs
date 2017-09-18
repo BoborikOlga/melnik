@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace models_01
+namespace models_01.Utils
 {
     public class Validator
     {
