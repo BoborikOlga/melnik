@@ -57,7 +57,7 @@ namespace models_01.Utils
             var couples = 0;
             for (int i = 0; i + 2 <= generatedNumbers.Count; i += 2)
             {
-                if (generatedNumbers[i] + generatedNumbers[i + 1] < 1)
+                if (Math.Pow(generatedNumbers[i], 2) + Math.Pow(generatedNumbers[i + 1], 2) < 1)
                 {
                     couples++;
                 }
@@ -69,17 +69,6 @@ namespace models_01.Utils
         public double GetExpectancy(IReadOnlyCollection<double> generatedNumbers)
         {
             return generatedNumbers.Sum() / generatedNumbers.Count;
-        }
-
-        public double GetMedium(IReadOnlyCollection<double> generatedNumbers, double expectancy)
-        {
-            double sum = 0;
-            foreach (var number in generatedNumbers)
-            {
-                sum += Math.Pow(number - expectancy, 2);
-            }
-
-            return sum / generatedNumbers.Count;
         }
 
         public double GetDispersion(IReadOnlyCollection<double> generatedNumbers, double m)

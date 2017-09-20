@@ -50,7 +50,7 @@ namespace models_01
 
             var expectancy = tester.GetExpectancy(generatedNumbers);
             var dispersion = tester.GetDispersion(generatedNumbers, expectancy);
-            var medium = tester.GetMedium(generatedNumbers, expectancy);
+            var average = Math.Sqrt(dispersion);
             var indirectSignsRation = tester.CheckByIndirectSigns(generatedNumbers);
             var period = tester.GetPeriod(generatedNumbers);
             var aperiodicLength = tester.GetAperiodicLength(generatedNumbers, period);
@@ -60,7 +60,7 @@ namespace models_01
             AperiodicTextBox.Text = aperiodicLength.ToString();
             DTextBox.Text = dispersion.ToString();
             ExpectancyTextBox.Text = expectancy.ToString();
-            MediumTextBox.Text = medium.ToString();
+            AverageTextBox.Text = average.ToString();
             RatioTextBox.Text = Math.Round(indirectSignsRation, 3).ToString();
         }
 

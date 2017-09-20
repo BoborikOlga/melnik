@@ -45,7 +45,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.ExpectancyTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.MediumTextBox = new System.Windows.Forms.TextBox();
+            this.AverageTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.RatioTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -179,21 +179,21 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "M:";
             // 
-            // MediumTextBox
+            // AverageTextBox
             // 
-            this.MediumTextBox.Location = new System.Drawing.Point(918, 43);
-            this.MediumTextBox.Name = "MediumTextBox";
-            this.MediumTextBox.Size = new System.Drawing.Size(100, 22);
-            this.MediumTextBox.TabIndex = 16;
+            this.AverageTextBox.Location = new System.Drawing.Point(918, 43);
+            this.AverageTextBox.Name = "AverageTextBox";
+            this.AverageTextBox.Size = new System.Drawing.Size(100, 22);
+            this.AverageTextBox.TabIndex = 16;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(915, 23);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 17);
+            this.label7.Size = new System.Drawing.Size(65, 17);
             this.label7.TabIndex = 15;
-            this.label7.Text = "Medium:";
+            this.label7.Text = "Average:";
             // 
             // RatioTextBox
             // 
@@ -254,7 +254,7 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.RatioTextBox);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.MediumTextBox);
+            this.Controls.Add(this.AverageTextBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.ExpectancyTextBox);
             this.Controls.Add(this.label6);
@@ -294,7 +294,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox ExpectancyTextBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox MediumTextBox;
+        private System.Windows.Forms.TextBox AverageTextBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox RatioTextBox;
         private System.Windows.Forms.Label label8;
