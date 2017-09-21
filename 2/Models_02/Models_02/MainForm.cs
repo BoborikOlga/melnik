@@ -1,6 +1,9 @@
-﻿using Models_02.Models;
+﻿using Models_02.Algorithms;
+using Models_02.Interfaces;
+using Models_02.Models;
 using Models_02.Utils;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Models_02
@@ -32,24 +35,16 @@ namespace Models_02
 
         private void Calculate()
         {
-            var generatorParams = GetParamsFromTextFields();
-            if (generatorParams == null)
+            var algorithm = GetAlgorithm();
+            if (algorithm == null)
             {
                 MessageBox.Show(@"There is invalid input. Check text fields and try again.");
 
                 return;
             }
 
-            var validator = new Validator();
-            if (!validator.AreParamsValid(generatorParams))
-            {
-                MessageBox.Show(@"Try again");
-
-                return;
-            }
-
-            var generator = new RandomGenerator(generatorParams);
-            
+            var generator = new RandomGenerator(algorithm);
+            var generatedNumbers = generator.GenerateNumbers();
 
             var tester = new Tester();
 
@@ -62,15 +57,62 @@ namespace Models_02
             //AverageTextBox.Text = average.ToString();
         }
 
-        private GeneratorParams GetParamsFromTextFields()
+        private IAlgorithm GetAlgorithm()
         {
             try
             {
-                var n = Convert.ToInt32(NTextBox.Text.Trim());
-                var a = Convert.ToDouble(ATextBox.Text.Trim());
-                var b = Convert.ToDouble(BTextBox.Text.Trim());
+                var parameters = new Dictionary<string, object>();
+                var index = AlgComboBox.SelectedIndex;
+                var distribution = (DistributionType)index;
 
-                return new GeneratorParams(a, b, n);
+                switch (distribution)
+                {
+                    case DistributionType.Uniform:
+                        {
+                            parameters["n"] = Convert.ToInt32(NTextBox.Text.Trim());
+                            parameters["a"] = Convert.ToDouble(ATextBox.Text.Trim());
+                            parameters["b"] = Convert.ToDouble(BTextBox.Text.Trim());
+
+                            return UniformDistribution.Create(parameters);
+                        }
+                    case DistributionType.Exponential:
+                        {
+                            parameters["n"] = Convert.ToInt32(NTextBox.Text.Trim());
+                            parameters["a"] = Convert.ToDouble(ATextBox.Text.Trim());
+                            parameters["b"] = Convert.ToDouble(BTextBox.Text.Trim());
+                            break;
+                        }
+                    case DistributionType.Gamma:
+                        {
+                            parameters["n"] = Convert.ToInt32(NTextBox.Text.Trim());
+                            parameters["a"] = Convert.ToDouble(ATextBox.Text.Trim());
+                            parameters["b"] = Convert.ToDouble(BTextBox.Text.Trim());
+                            break;
+                        }
+                    case DistributionType.Simpson:
+                        {
+                            parameters["n"] = Convert.ToInt32(NTextBox.Text.Trim());
+                            parameters["a"] = Convert.ToDouble(ATextBox.Text.Trim());
+                            parameters["b"] = Convert.ToDouble(BTextBox.Text.Trim());
+                            break;
+                        }
+                    case DistributionType.Triangular:
+                        {
+                            parameters["n"] = Convert.ToInt32(NTextBox.Text.Trim());
+                            parameters["a"] = Convert.ToDouble(ATextBox.Text.Trim());
+                            parameters["b"] = Convert.ToDouble(BTextBox.Text.Trim());
+                            break;
+                        }
+                    case DistributionType.Gaussian:
+                        {
+                            parameters["n"] = Convert.ToInt32(NTextBox.Text.Trim());
+                            parameters["a"] = Convert.ToDouble(ATextBox.Text.Trim());
+                            parameters["b"] = Convert.ToDouble(BTextBox.Text.Trim());
+                            break;
+                        }
+                }
+
+                return null;
             }
             catch
             {

@@ -12,12 +12,13 @@ namespace Models_02.Algorithms
         private List<double> _randomValues;
 
 
-        public UniformDistribution(IDictionary<string, object> parameters)
+        private UniformDistribution(IDictionary<string, object> parameters)
         {
             _n = (int)parameters["n"];
             _a = (double)parameters["a"];
             _b = (double)parameters["b"];
 
+            _randomValues = new List<double>();
             Random rand = new Random((int)DateTime.Now.Ticks);
             for (int i = 0; i < _n; i++)
             {
@@ -25,6 +26,27 @@ namespace Models_02.Algorithms
             }
         }
 
+
+        public static UniformDistribution Create(IDictionary<string, object> parameters)
+        {
+            if(AreParamsValid(parameters))
+            {
+                return new UniformDistribution(parameters);
+            }
+
+            return null;
+        }
+
+        private static bool AreParamsValid(IDictionary<string, object> parameters)
+        {
+            var n = (int)parameters["n"];
+            if(n < 2)
+            {
+                return false;
+            }
+
+            return true;
+        }
 
         public List<double> GenerateNumbers()
         {

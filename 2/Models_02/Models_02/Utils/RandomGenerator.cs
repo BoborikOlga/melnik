@@ -6,16 +6,12 @@ namespace Models_02.Utils
 {
     public class RandomGenerator
     {
-        private IDictionary<string, object> _generatorParams;
         private IAlgorithm _algorithm;
 
 
-        public RandomGenerator(IDictionary<string, object> generatorParams, IAlgorithm algorithm)
+        public RandomGenerator(IAlgorithm algorithm)
         {
-            _generatorParams = generatorParams;
-            _randomValues = new List<double>();
-            _algorithm = algorithm;
-            
+            _algorithm = algorithm;            
         }
 
 
@@ -27,7 +23,7 @@ namespace Models_02.Utils
 
         public List<double> GenerateNumbers()
         {
-            return _algorithm.GenerateNumbers(_generatorParams);
+            return _algorithm.GenerateNumbers();
         }
         
     }
