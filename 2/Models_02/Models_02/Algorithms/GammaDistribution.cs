@@ -5,31 +5,28 @@ using System.Windows.Forms;
 
 namespace Models_02.Algorithms
 {
-    class GaussianDistribution : IAlgorithm
+    class GammaDistribution : IAlgorithm
     {
         private int _n;
         private List<double> _randomValues;
         private List<double> _generatedNumbers;
-        private double _expectancy;
-        private double _m;
-        private double _average;
+        private double _lambda;
         Random _rand;
 
 
-        private GaussianDistribution(IDictionary<string, object> parameters)
+        private GammaDistribution(IDictionary<string, object> parameters)
         {
             _n = (int)parameters["n"];
-            _expectancy = (double)parameters["m"];
-            _average = (double)parameters["sigma"];
+            _lambda = (double)parameters["lambda"];
             _rand = new Random((int)DateTime.Now.Ticks);
         }
 
 
-        public static GaussianDistribution Create(IDictionary<string, object> parameters)
+        public static GammaDistribution Create(IDictionary<string, object> parameters)
         {
             if (AreParamsValid(parameters))
             {
-                return new GaussianDistribution(parameters);
+                return new GammaDistribution(parameters);
             }
 
             return null;
@@ -48,23 +45,16 @@ namespace Models_02.Algorithms
         private static bool AreParamsValid(IDictionary<string, object> parameters)
         {
             var n = (int)parameters["n"];
-            var expectancy = (double)parameters["m"];
-            var average = (double)parameters["sigma"];
-            if (n < 6)
+            if (n < 2)
             {
                 MessageBox.Show("To little value of n, try higher");
 
                 return false;
             }
-            if(expectancy < 0)
+            var lambda = (double)parameters["lambda"];
+            if (lambda < 0)
             {
-                MessageBox.Show("To little value of m, try higher");
-
-                return false;
-            }
-            if (average < 0)
-            {
-                MessageBox.Show("To little value of sigma, try higher");
+                MessageBox.Show("To little value of lambda, try higher");
 
                 return false;
             }
@@ -79,47 +69,31 @@ namespace Models_02.Algorithms
             for(int i = 0; i < _n; i++)
             {
                 GenerateRandomValues();
-                _generatedNumbers.Add(_expectancy + _average * Math.Sqrt(12 / (double)_n) * (Sum(_randomValues) - (double)_n / 2));
+                _generatedNumbers.Add(((-1) / _lambda) * Math.Log(Multiplicate(_generatedNumbers)));
             }
 
             return _generatedNumbers;
         }
 
-        private double Sum(IReadOnlyCollection<double> values)
+        private double Multiplicate(IReadOnlyCollection<double> values)
         {
-            double sum = 0;
+            double mul = 1;
             foreach(var value in values)
             {
-                sum += value;
+                mul *= value;
             }
 
-            return sum;
+            return mul;
         }
 
         public double GetDispersion()
         {
-            double d = 0;
-            _m = GetExpectancy();
-
-            foreach (var number in _generatedNumbers)
-            {
-                d = d + Math.Pow((number - _m), 2);
-            }
-            d = d / _generatedNumbers.Count;
-            d = d * _generatedNumbers.Count / (_generatedNumbers.Count - 1);
-
-            return d;
+            return _n / Math.Pow(_lambda, 2);
         }
 
         public double GetExpectancy()
         {
-            _m = 0;
-            foreach (var number in _generatedNumbers)
-            {
-                _m += number;
-            }
-            _m = _m / _generatedNumbers.Count;
-            return _m;
+            return _n / _lambda;
         }
 
         public double GetAverage()

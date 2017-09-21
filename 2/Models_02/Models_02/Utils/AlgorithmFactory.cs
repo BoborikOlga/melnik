@@ -21,15 +21,15 @@ namespace Models_02.Utils
                     }
                 case DistributionType.Gamma:
                     {
-                        break;
+                        return GammaDistribution.Create(parameters);
                     }
                 case DistributionType.Simpson:
                     {
-                        break;
+                        return SimpsonDistribution.Create(parameters);
                     }
                 case DistributionType.Triangular:
                     {
-                        break;
+                        return TriangularDistribution.Create(parameters);
                     }
                 case DistributionType.Gaussian:
                     {

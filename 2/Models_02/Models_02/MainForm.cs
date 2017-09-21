@@ -91,14 +91,12 @@ namespace Models_02
                     case DistributionType.Gamma:
                         {
                             parameters["n"] = Convert.ToInt32(NTextBox.Text.Trim());
-                            parameters["a"] = Convert.ToDouble(ATextBox.Text.Trim());
-                            parameters["b"] = Convert.ToDouble(BTextBox.Text.Trim());
+                            parameters["lambda"] = Convert.ToDouble(LambdaTextBox.Text.Trim());
 
                             return parameters;
                         }
                     case DistributionType.Simpson:
                         {
-                            parameters["n"] = Convert.ToInt32(NTextBox.Text.Trim());
                             parameters["a"] = Convert.ToDouble(ATextBox.Text.Trim());
                             parameters["b"] = Convert.ToDouble(BTextBox.Text.Trim());
 
@@ -106,7 +104,6 @@ namespace Models_02
                         }
                     case DistributionType.Triangular:
                         {
-                            parameters["n"] = Convert.ToInt32(NTextBox.Text.Trim());
                             parameters["a"] = Convert.ToDouble(ATextBox.Text.Trim());
                             parameters["b"] = Convert.ToDouble(BTextBox.Text.Trim());
 
