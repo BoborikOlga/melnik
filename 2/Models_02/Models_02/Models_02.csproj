@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithms\GaussianDistribution.cs" />
+    <Compile Include="Algorithms\ExponentialDistribution.cs" />
     <Compile Include="Algorithms\UniformDistribution.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

@@ -17,7 +17,7 @@ namespace Models_02.Utils
                     }
                 case DistributionType.Exponential:
                     {
-                        break;
+                        return ExponentialDistribution.Create(parameters);
                     }
                 case DistributionType.Gamma:
                     {

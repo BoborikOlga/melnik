@@ -84,9 +84,7 @@ namespace Models_02
                         }
                     case DistributionType.Exponential:
                         {
-                            parameters["n"] = Convert.ToInt32(NTextBox.Text.Trim());
-                            parameters["a"] = Convert.ToDouble(ATextBox.Text.Trim());
-                            parameters["b"] = Convert.ToDouble(BTextBox.Text.Trim());
+                            parameters["lambda"] = Convert.ToDouble(LambdaTextBox.Text.Trim());
 
                             return parameters;
                         }
