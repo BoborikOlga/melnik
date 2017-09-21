@@ -6,21 +6,25 @@ namespace Models_02.Algorithms
 {
     class UniformDistribution : IAlgorithm
     {
-        private int _n;
         private double _a;
         private double _b;
+        private const int _count = 10;
         private List<double> _randomValues;
 
 
         private UniformDistribution(IDictionary<string, object> parameters)
         {
-            _n = (int)parameters["n"];
             _a = (double)parameters["a"];
             _b = (double)parameters["b"];
+            GenerateRandomValues();
+        }
 
+
+        private void GenerateRandomValues()
+        {
             _randomValues = new List<double>();
             Random rand = new Random((int)DateTime.Now.Ticks);
-            for (int i = 0; i < _n; i++)
+            for (int i = 0; i < _count; i++)
             {
                 _randomValues.Add(rand.NextDouble());
             }
@@ -29,23 +33,7 @@ namespace Models_02.Algorithms
 
         public static UniformDistribution Create(IDictionary<string, object> parameters)
         {
-            if(AreParamsValid(parameters))
-            {
-                return new UniformDistribution(parameters);
-            }
-
-            return null;
-        }
-
-        private static bool AreParamsValid(IDictionary<string, object> parameters)
-        {
-            var n = (int)parameters["n"];
-            if(n < 2)
-            {
-                return false;
-            }
-
-            return true;
+            return new UniformDistribution(parameters);
         }
 
         public List<double> GenerateNumbers()
@@ -57,6 +45,21 @@ namespace Models_02.Algorithms
             }
 
             return numbers;
+        }
+
+        public double GetDispersion()
+        {
+            return (Math.Pow((_a - _b), 2)) / 12;
+        }
+
+        public double GetExpectancy()
+        {
+            return  (_a + _b) / 2;
+        }
+
+        public double GetAverage()
+        {
+            return Math.Sqrt(GetDispersion());
         }
     }
 }

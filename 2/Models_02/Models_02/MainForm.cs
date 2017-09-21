@@ -35,80 +35,92 @@ namespace Models_02
 
         private void Calculate()
         {
-            var algorithm = GetAlgorithm();
-            if (algorithm == null)
+            var distribution = GetSelectedDistribution();
+            var parameters = GetParametersFromTextFields(distribution);
+            if (parameters == null)
             {
                 MessageBox.Show(@"There is invalid input. Check text fields and try again.");
 
                 return;
             }
 
-            var generator = new RandomGenerator(algorithm);
-            var generatedNumbers = generator.GenerateNumbers();
+            var algorithm = AlgorithmFactory.Create(distribution, parameters);
+            if (algorithm == null)
+            {
+                MessageBox.Show(@"There are invalid params. Check text fields and try again.");
 
-            var tester = new Tester();
+                return;
+            }
 
-            //var expectancy = tester.GetExpectancy(generatedNumbers);
-            //var dispersion = tester.GetDispersion(generatedNumbers, expectancy);
-            //var average = Math.Sqrt(dispersion);
+            var generatedNumbers = algorithm.GenerateNumbers();
+            var expectancy = algorithm.GetExpectancy();
+            var dispersion = algorithm.GetDispersion();
+            var average = algorithm.GetAverage();
 
-            //DTextBox.Text = dispersion.ToString();
-            //ExpectancyTextBox.Text = expectancy.ToString();
-            //AverageTextBox.Text = average.ToString();
+            DTextBox.Text = dispersion.ToString();
+            ExpectancyTextBox.Text = expectancy.ToString();
+            AverageTextBox.Text = average.ToString();
         }
 
-        private IAlgorithm GetAlgorithm()
+        private DistributionType GetSelectedDistribution()
         {
+            var index = AlgComboBox.SelectedIndex;
+            return (DistributionType)index;
+        }
+
+        private IDictionary<string, object> GetParametersFromTextFields(DistributionType distribution)
+        {
+            var parameters = new Dictionary<string, object>();
             try
             {
-                var parameters = new Dictionary<string, object>();
-                var index = AlgComboBox.SelectedIndex;
-                var distribution = (DistributionType)index;
-
                 switch (distribution)
                 {
                     case DistributionType.Uniform:
                         {
-                            parameters["n"] = Convert.ToInt32(NTextBox.Text.Trim());
                             parameters["a"] = Convert.ToDouble(ATextBox.Text.Trim());
                             parameters["b"] = Convert.ToDouble(BTextBox.Text.Trim());
 
-                            return UniformDistribution.Create(parameters);
+                            return parameters;
                         }
                     case DistributionType.Exponential:
                         {
                             parameters["n"] = Convert.ToInt32(NTextBox.Text.Trim());
                             parameters["a"] = Convert.ToDouble(ATextBox.Text.Trim());
                             parameters["b"] = Convert.ToDouble(BTextBox.Text.Trim());
-                            break;
+
+                            return parameters;
                         }
                     case DistributionType.Gamma:
                         {
                             parameters["n"] = Convert.ToInt32(NTextBox.Text.Trim());
                             parameters["a"] = Convert.ToDouble(ATextBox.Text.Trim());
                             parameters["b"] = Convert.ToDouble(BTextBox.Text.Trim());
-                            break;
+
+                            return parameters;
                         }
                     case DistributionType.Simpson:
                         {
                             parameters["n"] = Convert.ToInt32(NTextBox.Text.Trim());
                             parameters["a"] = Convert.ToDouble(ATextBox.Text.Trim());
                             parameters["b"] = Convert.ToDouble(BTextBox.Text.Trim());
-                            break;
+
+                            return parameters;
                         }
                     case DistributionType.Triangular:
                         {
                             parameters["n"] = Convert.ToInt32(NTextBox.Text.Trim());
                             parameters["a"] = Convert.ToDouble(ATextBox.Text.Trim());
                             parameters["b"] = Convert.ToDouble(BTextBox.Text.Trim());
-                            break;
+
+                            return parameters;
                         }
                     case DistributionType.Gaussian:
                         {
                             parameters["n"] = Convert.ToInt32(NTextBox.Text.Trim());
-                            parameters["a"] = Convert.ToDouble(ATextBox.Text.Trim());
-                            parameters["b"] = Convert.ToDouble(BTextBox.Text.Trim());
-                            break;
+                            parameters["m"] = Convert.ToDouble(MTextBox.Text.Trim());
+                            parameters["sigma"] = Convert.ToDouble(SigmaTextBox.Text.Trim());
+
+                            return parameters;
                         }
                 }
 
