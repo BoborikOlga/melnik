@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using Models_02.Interfaces;
 using System.Windows.Forms;
+using Models_02.Utils;
 
 namespace Models_02.Algorithms
 {
     class ExponentialDistribution : IAlgorithm
     {
         private double _lambda;
-        private const int _count = 10;
+        private readonly int _count = Tester.NumbersCount;
         private List<double> _randomValues;
 
 

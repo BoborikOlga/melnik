@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using Models_02.Interfaces;
 using System.Windows.Forms;
+using Models_02.Utils;
 
 namespace Models_02.Algorithms
 {
     class GaussianDistribution : IAlgorithm
     {
         private int _n;
+        private readonly int _count = Tester.NumbersCount;
         private List<double> _randomValues;
         private List<double> _generatedNumbers;
         private double _expectancy;
@@ -76,7 +78,7 @@ namespace Models_02.Algorithms
         {
             _generatedNumbers = new List<double>();
             
-            for(int i = 0; i < _n; i++)
+            for(int i = 0; i < _count; i++)
             {
                 GenerateRandomValues();
                 _generatedNumbers.Add(_expectancy + _average * Math.Sqrt(12 / (double)_n) * (Sum(_randomValues) - (double)_n / 2));

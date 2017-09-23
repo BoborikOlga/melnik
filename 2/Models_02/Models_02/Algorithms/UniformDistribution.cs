@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Models_02.Interfaces;
+using Models_02.Utils;
 
 namespace Models_02.Algorithms
 {
@@ -8,7 +9,7 @@ namespace Models_02.Algorithms
     {
         private double _a;
         private double _b;
-        private const int _count = 10;
+        private readonly int _count = Tester.NumbersCount;
         private List<double> _randomValues;
 
 

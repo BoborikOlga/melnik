@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Models_02.Interfaces;
+using Models_02.Utils;
 
 namespace Models_02.Algorithms
 {
@@ -9,7 +10,7 @@ namespace Models_02.Algorithms
         private double _a;
         private double _b;
         private double _m;
-        private const int _n = 10;
+        private readonly int _count = Tester.NumbersCount;
         private List<double> _randomValues;
         private List<double> _generatedNumbers;
         Random _rand;
@@ -38,13 +39,10 @@ namespace Models_02.Algorithms
         public List<double> GenerateNumbers()
         {
             _generatedNumbers = new List<double>();
-            while(_generatedNumbers.Count < _n)
+            for(int i = 0; i < _count; i++)
             {
                 GenerateRandomValues();
-                if(_randomValues[1] < 1 - _randomValues[0])
-                {
-                    _generatedNumbers.Add(_a + (_b - _a) * _randomValues[0]);
-                }
+                _generatedNumbers.Add(_a + (_b - _a) * Math.Max(_randomValues[0], _randomValues[1]));
             }
 
             return _generatedNumbers;

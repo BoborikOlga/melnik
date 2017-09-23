@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using Models_02.Interfaces;
 using System.Windows.Forms;
+using Models_02.Utils;
 
 namespace Models_02.Algorithms
 {
     class SimpsonDistribution : IAlgorithm
     {
-        private const int _n = 10;
+        private readonly int _count = Tester.NumbersCount;
         private double _a;
         private double _b;
         private List<double> _randomValuesY;
@@ -36,7 +37,7 @@ namespace Models_02.Algorithms
             _randomValuesY = new List<double>();
             Random randY = new Random((int)DateTime.Now.Ticks);
             Random randZ = new Random((int)DateTime.Now.Ticks);
-            for (int i = 0; i < _n; i++)
+            for (int i = 0; i < _count; i++)
             {
                 _randomValuesY.Add(randY.NextDouble());
                 _randomValuesZ.Add(randZ.NextDouble());
@@ -47,7 +48,7 @@ namespace Models_02.Algorithms
         {
             _generatedNumbers = new List<double>();
             
-            for(int i = 0; i < _n; i++)
+            for(int i = 0; i < _count; i++)
             {
                 _generatedNumbers.Add(_randomValuesY[i] + _randomValuesZ[i]);
             }
@@ -71,13 +72,13 @@ namespace Models_02.Algorithms
 
         public double GetExpectancy()
         {
-            double m = 0;
+            _expectancy = 0;
             foreach (var number in _generatedNumbers)
             {
-                m += number;
+                _expectancy += number;
             }
 
-            return m / _generatedNumbers.Count;
+            return _expectancy / _generatedNumbers.Count;
         }
 
         public double GetAverage()
