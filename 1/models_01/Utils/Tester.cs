@@ -9,6 +9,10 @@ namespace models_01.Utils
     {
         public int GetAperiodicLength(List<double> generatedNumbers, int period)
         {
+            if(period == generatedNumbers.Count)
+            {
+                return generatedNumbers.Count;
+            }
             var index = generatedNumbers.Count;
             for (int i = 0; i + period < generatedNumbers.Count && generatedNumbers.Count == index; i++)
             {
@@ -17,7 +21,7 @@ namespace models_01.Utils
                     index = i;
                 }
             }
-
+ 
             return index + period;
         }
 
