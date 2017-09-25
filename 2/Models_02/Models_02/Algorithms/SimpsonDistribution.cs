@@ -15,7 +15,7 @@ namespace Models_02.Algorithms
         private List<double> _randomValuesZ;
         private List<double> _generatedNumbers;
         private double _expectancy;
-
+        
 
         private SimpsonDistribution(IDictionary<string, object> parameters)
         {
@@ -39,8 +39,8 @@ namespace Models_02.Algorithms
             Random randZ = new Random((int)DateTime.Now.Ticks);
             for (int i = 0; i < _count; i++)
             {
-                _randomValuesY.Add(randY.NextDouble());
-                _randomValuesZ.Add(randZ.NextDouble());
+                _randomValuesY.Add(randY.NextDouble() * (_b / 2 - _a / 2) + _a / 2);
+                _randomValuesZ.Add(randZ.NextDouble() * (_b / 2 - _a / 2) + _a / 2);
             }
         }
 
