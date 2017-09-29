@@ -11,6 +11,7 @@ namespace Models_02.Algorithms
         private double _lambda;
         private readonly int _count = Tester.NumbersCount;
         private List<double> _randomValues;
+        private List<double> _generatedNumbers;
 
 
         private ExponentialDistribution(IDictionary<string, object> parameters)
@@ -56,28 +57,46 @@ namespace Models_02.Algorithms
 
         public List<double> GenerateNumbers()
         {
-            var numbers = new List<double>();
+            _generatedNumbers = new List<double>();
             foreach(var rand in _randomValues)
             {
-                numbers.Add(((-1) / _lambda) * Math.Log(rand));
+                _generatedNumbers.Add(((-1) / _lambda) * Math.Log(rand));
             }
 
-            return numbers;
+            return _generatedNumbers;
         }
 
         public double GetDispersion()
         {
-            return 1 / Math.Pow(_lambda, 2);
+            double d = 0;
+            var _m = GetExpectancy();
+
+            foreach (var number in _generatedNumbers)
+            {
+                d = d + Math.Pow((number - _m), 2);
+            }
+            d = d / _generatedNumbers.Count;
+            d = d * _generatedNumbers.Count / (_generatedNumbers.Count - 1);
+
+            return d;
+
+            
         }
 
         public double GetExpectancy()
         {
-            return 1 / _lambda;
+            double _m = 0;
+            foreach (var number in _generatedNumbers)
+            {
+                _m += number;
+            }
+            _m = _m / _generatedNumbers.Count;
+            return _m;
         }
 
         public double GetAverage()
         {
-            return 1 / _lambda;
+            return Math.Sqrt(GetDispersion());
         }
     }
 }

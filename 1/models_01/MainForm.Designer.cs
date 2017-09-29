@@ -53,6 +53,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.AperiodicTextBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.CountTextBox = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Graph)).BeginInit();
             this.SuspendLayout();
             // 
@@ -243,11 +245,30 @@
             this.label10.TabIndex = 21;
             this.label10.Text = "Aperiodic:";
             // 
+            // CountTextBox
+            // 
+            this.CountTextBox.Location = new System.Drawing.Point(542, 43);
+            this.CountTextBox.Name = "CountTextBox";
+            this.CountTextBox.Size = new System.Drawing.Size(100, 22);
+            this.CountTextBox.TabIndex = 24;
+            this.CountTextBox.TextChanged += new System.EventHandler(this.CountTextBox_TextChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(539, 23);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(49, 17);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Count:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1303, 532);
+            this.Controls.Add(this.CountTextBox);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.AperiodicTextBox);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.PeriodTextBox);
@@ -302,6 +323,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox AperiodicTextBox;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox CountTextBox;
+        private System.Windows.Forms.Label label11;
     }
 }
 

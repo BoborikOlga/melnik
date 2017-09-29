@@ -90,12 +90,28 @@ namespace Models_02.Algorithms
 
         public double GetDispersion()
         {
-            return _n / Math.Pow(_lambda, 2);
+            double d = 0;
+            var _m = GetExpectancy();
+
+            foreach (var number in _generatedNumbers)
+            {
+                d = d + Math.Pow((number - _m), 2);
+            }
+            d = d / _generatedNumbers.Count;
+            d = d * _generatedNumbers.Count / (_generatedNumbers.Count - 1);
+
+            return d;
         }
 
         public double GetExpectancy()
         {
-            return _n / _lambda;
+            double _m = 0;
+            foreach (var number in _generatedNumbers)
+            {
+                _m += number;
+            }
+            _m = _m / _generatedNumbers.Count;
+            return _m;
         }
 
         public double GetAverage()

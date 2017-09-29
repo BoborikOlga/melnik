@@ -7,7 +7,6 @@ c:\users\user\documents\visual studio 2017\Projects\models_01\models_01\obj\Debu
 c:\users\user\documents\visual studio 2017\Projects\models_01\models_01\obj\Debug\models_01.csproj.GenerateResource.Cache
 c:\users\user\documents\visual studio 2017\Projects\models_01\models_01\obj\Debug\models_01.exe
 c:\users\user\documents\visual studio 2017\Projects\models_01\models_01\obj\Debug\models_01.pdb
-C:\Users\User\Documents\Visual Studio 2017\Projects\melnik\1\models_01\bin\Debug\models_01.exe.config
 C:\Users\User\Documents\Visual Studio 2017\Projects\melnik\1\models_01\bin\Debug\models_01.exe
 C:\Users\User\Documents\Visual Studio 2017\Projects\melnik\1\models_01\bin\Debug\models_01.pdb
 C:\Users\User\Documents\Visual Studio 2017\Projects\melnik\1\models_01\obj\Debug\models_01.csprojResolveAssemblyReference.cache
@@ -16,3 +15,4 @@ C:\Users\User\Documents\Visual Studio 2017\Projects\melnik\1\models_01\obj\Debug
 C:\Users\User\Documents\Visual Studio 2017\Projects\melnik\1\models_01\obj\Debug\models_01.csproj.GenerateResource.Cache
 C:\Users\User\Documents\Visual Studio 2017\Projects\melnik\1\models_01\obj\Debug\models_01.exe
 C:\Users\User\Documents\Visual Studio 2017\Projects\melnik\1\models_01\obj\Debug\models_01.pdb
+C:\Users\User\Documents\Visual Studio 2017\Projects\melnik\1\models_01\obj\Debug\models_01.csproj.CoreCompileInputs.cache

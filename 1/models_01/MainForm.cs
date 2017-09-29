@@ -87,16 +87,22 @@ namespace models_01
             try
             {
                 var m = Convert.ToInt32(MTextBox.Text.Trim());
-                var a = Convert.ToDouble(ATextBox.Text.Trim().Replace(".", ","));
+                var a = Convert.ToInt32(ATextBox.Text.Trim().Replace(".", ","));
                 var r0 = Convert.ToDouble(RTextBox.Text.Trim().Replace(".", ","));
+                var count = Convert.ToInt32(CountTextBox.Text.Trim());
                 _intervals = Convert.ToInt32(IntervalsTextBox.Text.Trim());
 
-                return new GeneratorParams(a, r0, m);
+                return new GeneratorParams(a, r0, m, count);
             }
             catch
             {
                 return null;
             }
+        }
+
+        private void CountTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

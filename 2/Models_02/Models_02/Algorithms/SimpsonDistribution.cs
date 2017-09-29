@@ -59,10 +59,11 @@ namespace Models_02.Algorithms
         public double GetDispersion()
         {
             double d = 0;
+            var m = GetExpectancy();
 
             foreach (var number in _generatedNumbers)
             {
-                d = d + Math.Pow((number - _expectancy), 2);
+                d = d + Math.Pow((number - m), 2);
             }
             d = d / _generatedNumbers.Count;
             d = d * _generatedNumbers.Count / (_generatedNumbers.Count - 1);

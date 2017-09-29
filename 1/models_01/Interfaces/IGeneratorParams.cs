@@ -7,5 +7,7 @@
         int M { get; }
 
         double R0 { get; }
+
+        int Count { get; }
     }
 }

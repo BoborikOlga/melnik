@@ -23,13 +23,14 @@ namespace models_01.Utils
         public List<double> GenerateNumbers()
         {
             var numbers = new List<double>();
-            var count = _generatorParams.M;
+            var m = _generatorParams.M;
+            var count = _generatorParams.Count;
             var coefficient = _generatorParams.A;
             var r = _generatorParams.R0;
 
             for (int i = 0; i < count; i++)
             {
-                r = (coefficient * r) % count;
+                r = (coefficient * r) % m;
                 numbers.Add(r / count);
             }
 
